@@ -64,6 +64,35 @@
       "deleteTitle": "Eliminar partida",
       "deleteMessage": "Se eliminará \"{{name}}\" y todo su historial. Esta acción no se puede deshacer."
     },
+    "play": {
+      "roundLabel": "Ronda {{current}} de {{total}}",
+      "switcherFallback": "Switcher no conectado — controles simulados activos",
+      "dominating": "DOMINANDO",
+      "ready": "Listo",
+      "paused": "En pausa",
+      "startRound": "Iniciar ronda",
+      "pause": "Pausar",
+      "resume": "Reanudar",
+      "endRound": "Terminar ronda",
+      "getReady": "Prepárense",
+      "go": "¡YA!",
+      "press": "Pulsar {{team}}",
+      "pressDisabled": "Inicia la ronda para activar los botones",
+      "roundOver": "Ronda {{n}} terminada",
+      "roundWinner": "{{name}} gana la ronda",
+      "roundTied": "Ronda empatada",
+      "nextRound": "Siguiente ronda",
+      "finish": "Terminar encuentro",
+      "matchComplete": "Encuentro completado",
+      "matchWinner": "{{name}} gana el encuentro",
+      "matchTied": "Encuentro empatado",
+      "roundsWon": "Rondas ganadas — {{nameA}}: {{a}} · {{nameB}}: {{b}}",
+      "abort": {
+        "title": "¿Cancelar encuentro?",
+        "message": "El progreso se guardará como cancelado. No podrás reanudar un encuentro cancelado.",
+        "confirm": "Cancelar encuentro"
+      }
+    },
     "notFound": "Partida no encontrada"
   },
   "settings": {

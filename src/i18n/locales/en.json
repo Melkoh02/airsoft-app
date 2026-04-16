@@ -64,6 +64,35 @@
       "deleteTitle": "Delete game",
       "deleteMessage": "\"{{name}}\" and all its match history will be deleted. This cannot be undone."
     },
+    "play": {
+      "roundLabel": "Round {{current}} of {{total}}",
+      "switcherFallback": "Switcher not connected — simulated controls active",
+      "dominating": "DOMINATING",
+      "ready": "Ready",
+      "paused": "Paused",
+      "startRound": "Start round",
+      "pause": "Pause",
+      "resume": "Resume",
+      "endRound": "End round",
+      "getReady": "Get ready",
+      "go": "GO!",
+      "press": "Press {{team}}",
+      "pressDisabled": "Start round to enable buttons",
+      "roundOver": "Round {{n}} over",
+      "roundWinner": "{{name}} wins the round",
+      "roundTied": "Round tied",
+      "nextRound": "Next round",
+      "finish": "Finish match",
+      "matchComplete": "Match complete",
+      "matchWinner": "{{name}} wins the match",
+      "matchTied": "Match tied",
+      "roundsWon": "Rounds won — {{nameA}}: {{a}} · {{nameB}}: {{b}}",
+      "abort": {
+        "title": "Abort match?",
+        "message": "Progress will be saved as aborted. You can't resume an aborted match.",
+        "confirm": "Abort match"
+      }
+    },
     "notFound": "Game not found"
   },
   "settings": {
