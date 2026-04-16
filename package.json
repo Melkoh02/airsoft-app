@@ -6,6 +6,7 @@
     "start": "expo start",
     "android": "rm -rf android && APP_VARIANT=development expo run:android",
     "android:prebuild": "APP_VARIANT=development npx expo prebuild --clean",
+    "android:release": "npx expo prebuild --clean && cd android && ./gradlew assembleRelease -x lint -x test",
     "ios": "APP_VARIANT=development expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
