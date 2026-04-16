@@ -1,0 +1,40 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "close": "Cerrar",
+    "done": "Listo",
+    "add": "Añadir",
+    "edit": "Editar",
+    "create": "Crear",
+    "search": "Buscar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "noResults": "Sin resultados"
+  },
+  "format": {
+    "today": "Hoy",
+    "yesterday": "Ayer"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "settings": "Ajustes"
+  },
+  "home": {
+    "title": "Airsoft App",
+    "welcome": "Bienvenido",
+    "description": "Esta es la pantalla principal — comienza a construir desde aquí."
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeSystem": "Sistema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "about": "Acerca de",
+    "version": "Versión {{version}}"
+  }
+}
