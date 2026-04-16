@@ -57,8 +57,13 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }
 
+const FALLBACK: SettingsContextValue = {
+  ...DEFAULTS,
+  setHapticsEnabled: () => {},
+  loaded: false,
+};
+
 export function useSettings(): SettingsContextValue {
   const ctx = useContext(SettingsContext);
-  if (!ctx) throw new Error("useSettings must be used within SettingsProvider");
-  return ctx;
+  return ctx ?? FALLBACK;
 }
