@@ -2,8 +2,11 @@ import "@/i18n";
 import { StatusBar } from "expo-status-bar";
 import { Stack } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SQLiteProvider } from "expo-sqlite";
 import { ThemeProvider, useTheme } from "@/providers/ThemeProvider";
 import { DataRefreshProvider } from "@/providers/DataRefreshProvider";
+import { SettingsProvider } from "@/providers/SettingsProvider";
+import { DATABASE_NAME, initDatabase } from "@/db";
 
 function AppStatusBar() {
   const { statusBarStyle, isDark } = useTheme();
@@ -24,6 +27,7 @@ function AppStack() {
         }}
       >
         <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="domination" />
       </Stack>
       <AppStatusBar />
     </>
@@ -33,11 +37,15 @@ function AppStack() {
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
-      <DataRefreshProvider>
-        <ThemeProvider>
-          <AppStack />
-        </ThemeProvider>
-      </DataRefreshProvider>
+      <SQLiteProvider databaseName={DATABASE_NAME} onInit={initDatabase}>
+        <SettingsProvider>
+          <DataRefreshProvider>
+            <ThemeProvider>
+              <AppStack />
+            </ThemeProvider>
+          </DataRefreshProvider>
+        </SettingsProvider>
+      </SQLiteProvider>
     </SafeAreaProvider>
   );
 }

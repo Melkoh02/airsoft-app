@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Pressable, StyleSheet } from "react-native";
+import { View, Pressable, StyleSheet, Switch } from "react-native";
 import { useTranslation } from "react-i18next";
 import { ScreenLayout } from "@/components/templates/ScreenLayout";
 import { HeaderBar } from "@/components/templates/HeaderBar";
@@ -8,6 +8,7 @@ import { AppText } from "@/components/atoms/AppText";
 import { AppIcon } from "@/components/atoms/AppIcon";
 import { Divider } from "@/components/atoms/Divider";
 import { useTheme } from "@/providers/ThemeProvider";
+import { useSettings } from "@/providers/SettingsProvider";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SUPPORTED_LANGUAGES } from "@/i18n";
 import { spacing } from "@/theme/spacing";
@@ -17,6 +18,7 @@ type ThemeMode = "system" | "light" | "dark";
 export default function SettingsScreen() {
   const { t } = useTranslation();
   const { colors, mode, setMode } = useTheme();
+  const { hapticsEnabled, setHapticsEnabled } = useSettings();
   const { language, changeLanguage } = useLanguage();
   const [showLanguagePicker, setShowLanguagePicker] = useState(false);
   const [showThemePicker, setShowThemePicker] = useState(false);
@@ -73,9 +75,21 @@ export default function SettingsScreen() {
       </Pressable>
       <Divider />
 
+      <View style={styles.row}>
+        <AppIcon name="vibrate" size={22} color={colors.primary} />
+        <View style={styles.rowText}>
+          <AppText variant="body">{t("settings.haptics")}</AppText>
+          <AppText variant="caption" color={colors.textSecondary}>
+            {t("settings.hapticsDescription")}
+          </AppText>
+        </View>
+        <Switch value={hapticsEnabled} onValueChange={setHapticsEnabled} />
+      </View>
+      <Divider />
+
       <View style={styles.versionContainer}>
         <AppText variant="caption" color={colors.textTertiary}>
-          {t("settings.version", { version: "0.1.0" })}
+          {t("settings.version", { version: "0.2.0" })}
         </AppText>
       </View>
 

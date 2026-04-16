@@ -41,3 +41,10 @@ export function todayDateString(): string {
 export function nowTimeString(): string {
   return new Date().toTimeString().slice(0, 5);
 }
+
+export function formatDuration(ms: number): string {
+  const totalSec = Math.max(0, Math.floor(ms / 1000));
+  const min = Math.floor(totalSec / 60);
+  const sec = totalSec % 60;
+  return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+}
