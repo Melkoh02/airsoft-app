@@ -119,6 +119,8 @@
     "themeSystem": "Sistema",
     "themeLight": "Claro",
     "themeDark": "Oscuro",
+    "haptics": "Retroalimentación háptica",
+    "hapticsDescription": "Vibrar al pulsar botones durante los encuentros",
     "about": "Acerca de",
     "version": "Versión {{version}}"
   }

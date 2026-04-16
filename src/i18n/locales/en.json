@@ -119,6 +119,8 @@
     "themeSystem": "System",
     "themeLight": "Light",
     "themeDark": "Dark",
+    "haptics": "Haptic feedback",
+    "hapticsDescription": "Vibrate on button presses during matches",
     "about": "About",
     "version": "Version {{version}}"
   }

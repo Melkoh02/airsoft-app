@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BackHandler, Pressable, StyleSheet, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { router, useLocalSearchParams } from "expo-router";
+import { useKeepAwake } from "expo-keep-awake";
 import { ScreenLayout } from "@/components/templates/ScreenLayout";
 import { HeaderBar } from "@/components/templates/HeaderBar";
 import { AppText } from "@/components/atoms/AppText";
@@ -13,6 +14,7 @@ import { useTheme } from "@/providers/ThemeProvider";
 import { useGame } from "@/features/domination/hooks/useGame";
 import { useMatchEngine } from "@/features/domination/hooks/useMatchEngine";
 import { SimulatedButtonSource } from "@/features/domination";
+import { useHaptic } from "@/hooks/useHaptic";
 import {
   roundElapsedMs,
   teamAccumulatedMs,
@@ -52,6 +54,8 @@ function PlayContent({ game }: { game: Game }) {
   const { colors } = useTheme();
   const [source] = useState(() => new SimulatedButtonSource());
   const [confirmAbort, setConfirmAbort] = useState(false);
+  const haptic = useHaptic();
+  useKeepAwake("domination-match");
 
   const { state, dispatch, match } = useMatchEngine({
     game,
@@ -60,12 +64,15 @@ function PlayContent({ game }: { game: Game }) {
 
   useEffect(() => {
     source.start();
-    const unsub = source.onPress((ev) => dispatch({ type: "press", teamId: ev.teamId, at: ev.at }));
+    const unsub = source.onPress((ev) => {
+      haptic("medium");
+      dispatch({ type: "press", teamId: ev.teamId, at: ev.at });
+    });
     return () => {
       unsub();
       source.stop();
     };
-  }, [source, dispatch]);
+  }, [source, dispatch, haptic]);
 
   useEffect(() => {
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
