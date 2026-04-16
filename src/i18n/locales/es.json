@@ -20,12 +20,21 @@
   },
   "tabs": {
     "home": "Inicio",
+    "domination": "Dominación",
     "settings": "Ajustes"
   },
   "home": {
     "title": "Airsoft App",
     "welcome": "Bienvenido",
     "description": "Esta es la pantalla principal — comienza a construir desde aquí."
+  },
+  "domination": {
+    "title": "Dominación",
+    "empty": {
+      "title": "Aún no hay partidas",
+      "description": "Crea tu primera partida de dominación para empezar."
+    },
+    "gameSummary": "{{rounds}} rondas · {{minutes}} min c/u"
   },
   "settings": {
     "title": "Ajustes",

@@ -20,12 +20,21 @@
   },
   "tabs": {
     "home": "Home",
+    "domination": "Domination",
     "settings": "Settings"
   },
   "home": {
     "title": "Airsoft App",
     "welcome": "Welcome",
     "description": "This is the home screen — start building from here."
+  },
+  "domination": {
+    "title": "Domination",
+    "empty": {
+      "title": "No games yet",
+      "description": "Create your first domination game to get started."
+    },
+    "gameSummary": "{{rounds}} rounds · {{minutes}} min each"
   },
   "settings": {
     "title": "Settings",
