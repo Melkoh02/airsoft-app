@@ -53,9 +53,8 @@ function PlayContent({ game }: { game: Game }) {
   const [source] = useState(() => new SimulatedButtonSource());
   const [confirmAbort, setConfirmAbort] = useState(false);
 
-  const { state, dispatch } = useMatchEngine({
+  const { state, dispatch, match } = useMatchEngine({
     game,
-    onCompleted: () => {},
     onAborted: () => router.back(),
   });
 
@@ -147,7 +146,9 @@ function PlayContent({ game }: { game: Game }) {
         <RoundEndedOverlay state={state} game={game} dispatch={dispatch} />
       )}
 
-      {state.status === "completed" && <CompletedOverlay state={state} game={game} />}
+      {state.status === "completed" && (
+        <CompletedOverlay state={state} game={game} matchId={match?.id} />
+      )}
 
       <ConfirmModal
         visible={confirmAbort}
@@ -400,7 +401,15 @@ function RoundEndedOverlay({
   );
 }
 
-function CompletedOverlay({ state, game }: { state: MatchEngineState; game: Game }) {
+function CompletedOverlay({
+  state,
+  game,
+  matchId,
+}: {
+  state: MatchEngineState;
+  game: Game;
+  matchId: string | undefined;
+}) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const [teamA, teamB] = game.teams;
@@ -429,7 +438,15 @@ function CompletedOverlay({ state, game }: { state: MatchEngineState; game: Game
           nameB: teamB.name,
         })}
       </AppText>
-      <AppButton title={t("common.done")} onPress={() => router.back()} />
+      <AppButton
+        title={t("domination.play.viewSummary")}
+        icon="chart-bar"
+        disabled={!matchId}
+        onPress={() =>
+          matchId && router.replace(`/domination/${game.id}/summary/${matchId}` as never)
+        }
+      />
+      <AppButton title={t("common.done")} variant="ghost" onPress={() => router.back()} />
     </View>
   );
 }

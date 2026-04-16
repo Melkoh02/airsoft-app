@@ -7,12 +7,16 @@ import { ScreenLayout } from "@/components/templates/ScreenLayout";
 import { HeaderBar } from "@/components/templates/HeaderBar";
 import { AppText } from "@/components/atoms/AppText";
 import { AppButton } from "@/components/atoms/AppButton";
+import { AppIcon } from "@/components/atoms/AppIcon";
 import { ConfirmModal } from "@/components/atoms/ConfirmModal";
 import { EmptyState } from "@/components/molecules/EmptyState";
+import { ListItem } from "@/components/molecules/ListItem";
 import { useDataRefresh } from "@/providers/DataRefreshProvider";
 import { useTheme } from "@/providers/ThemeProvider";
-import { gamesRepository } from "@/features/domination";
+import { computeMatchStats, gamesRepository } from "@/features/domination";
+import type { Game, Match } from "@/features/domination";
 import { useGame } from "@/features/domination/hooks/useGame";
+import { useMatches } from "@/features/domination/hooks/useMatches";
 import { spacing } from "@/theme/spacing";
 
 export default function GameDetailScreen() {
@@ -22,6 +26,7 @@ export default function GameDetailScreen() {
   const { invalidate } = useDataRefresh();
   const { id } = useLocalSearchParams<{ id: string }>();
   const game = useGame(id);
+  const matches = useMatches(id);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   if (game === undefined) {
@@ -98,6 +103,8 @@ export default function GameDetailScreen() {
           icon="play"
           onPress={() => router.push(`/domination/${game.id}/play`)}
         />
+
+        <MatchHistory game={game} matches={matches} />
       </ScrollView>
 
       <ConfirmModal
@@ -122,6 +129,53 @@ function Row({ label, value }: { label: string; value: string }) {
         {label}
       </AppText>
       <AppText variant="body">{value}</AppText>
+    </View>
+  );
+}
+
+function MatchHistory({ game, matches }: { game: Game; matches: Match[] | null }) {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  const finished = (matches ?? []).filter((m) => m.status !== "in_progress");
+
+  if (!matches || finished.length === 0) return null;
+
+  return (
+    <View style={[styles.section, { backgroundColor: colors.surface }]}>
+      <AppText variant="label" color={colors.textSecondary} style={styles.sectionHeader}>
+        {t("domination.detail.recentMatches")}
+      </AppText>
+      {finished.slice(0, 10).map((match) => {
+        const stats = computeMatchStats(match, game);
+        const winner = stats.winnerTeamId
+          ? (game.teams.find((team) => team.id === stats.winnerTeamId) ?? null)
+          : null;
+        const title =
+          match.status === "aborted"
+            ? t("domination.detail.matchAborted")
+            : winner
+              ? t("domination.detail.matchWinner", { name: winner.name })
+              : t("domination.detail.matchTied");
+        return (
+          <ListItem
+            key={match.id}
+            onPress={() => router.push(`/domination/${game.id}/summary/${match.id}`)}
+            left={
+              winner ? (
+                <View style={[styles.teamDotSmall, { backgroundColor: winner.color }]} />
+              ) : (
+                <View style={[styles.teamDotSmall, { backgroundColor: colors.border }]} />
+              )
+            }
+            right={<AppIcon name="chevron-right" color={colors.iconSecondary} />}
+          >
+            <AppText variant="body">{title}</AppText>
+            <AppText variant="caption" color={colors.textSecondary}>
+              {new Date(match.startedAt).toLocaleString()}
+            </AppText>
+          </ListItem>
+        );
+      })}
     </View>
   );
 }
@@ -151,6 +205,15 @@ const styles = StyleSheet.create({
   section: {
     borderRadius: 12,
     paddingHorizontal: spacing.lg,
+  },
+  sectionHeader: {
+    paddingTop: spacing.md,
+    paddingBottom: spacing.sm,
+  },
+  teamDotSmall: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
   },
   row: {
     flexDirection: "row",

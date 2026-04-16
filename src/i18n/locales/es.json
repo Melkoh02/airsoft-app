@@ -62,7 +62,23 @@
       "seconds": "{{value}} s",
       "startMatch": "Iniciar encuentro",
       "deleteTitle": "Eliminar partida",
-      "deleteMessage": "Se eliminará \"{{name}}\" y todo su historial. Esta acción no se puede deshacer."
+      "deleteMessage": "Se eliminará \"{{name}}\" y todo su historial. Esta acción no se puede deshacer.",
+      "recentMatches": "Encuentros recientes",
+      "matchWinner": "Ganó {{name}}",
+      "matchTied": "Empatado",
+      "matchAborted": "Cancelado"
+    },
+    "summary": {
+      "title": "Resumen del encuentro",
+      "winner": "Gana {{name}}",
+      "tied": "Encuentro empatado",
+      "aborted": "Encuentro cancelado",
+      "notFound": "Encuentro no encontrado",
+      "roundBreakdown": "Desglose por ronda",
+      "round": "Ronda {{n}}",
+      "roundTied": "Empatada",
+      "roundsWonCount_one": "{{n}} ronda ganada",
+      "roundsWonCount_other": "{{n}} rondas ganadas"
     },
     "play": {
       "roundLabel": "Ronda {{current}} de {{total}}",
@@ -91,7 +107,8 @@
         "title": "¿Cancelar encuentro?",
         "message": "El progreso se guardará como cancelado. No podrás reanudar un encuentro cancelado.",
         "confirm": "Cancelar encuentro"
-      }
+      },
+      "viewSummary": "Ver resumen"
     },
     "notFound": "Partida no encontrada"
   },

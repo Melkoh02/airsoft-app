@@ -15,6 +15,7 @@ export default function DominationLayout() {
       <Stack.Screen name="[id]/index" />
       <Stack.Screen name="[id]/edit" options={{ presentation: "modal" }} />
       <Stack.Screen name="[id]/play" options={{ gestureEnabled: false }} />
+      <Stack.Screen name="[id]/summary/[matchId]" />
     </Stack>
   );
 }

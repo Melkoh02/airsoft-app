@@ -62,7 +62,23 @@
       "seconds": "{{value}} s",
       "startMatch": "Start match",
       "deleteTitle": "Delete game",
-      "deleteMessage": "\"{{name}}\" and all its match history will be deleted. This cannot be undone."
+      "deleteMessage": "\"{{name}}\" and all its match history will be deleted. This cannot be undone.",
+      "recentMatches": "Recent matches",
+      "matchWinner": "{{name}} won",
+      "matchTied": "Tied",
+      "matchAborted": "Aborted"
+    },
+    "summary": {
+      "title": "Match summary",
+      "winner": "{{name}} wins",
+      "tied": "Match tied",
+      "aborted": "Match aborted",
+      "notFound": "Match not found",
+      "roundBreakdown": "Round breakdown",
+      "round": "Round {{n}}",
+      "roundTied": "Tied",
+      "roundsWonCount_one": "{{n}} round won",
+      "roundsWonCount_other": "{{n}} rounds won"
     },
     "play": {
       "roundLabel": "Round {{current}} of {{total}}",
@@ -91,7 +107,8 @@
         "title": "Abort match?",
         "message": "Progress will be saved as aborted. You can't resume an aborted match.",
         "confirm": "Abort match"
-      }
+      },
+      "viewSummary": "View summary"
     },
     "notFound": "Game not found"
   },
