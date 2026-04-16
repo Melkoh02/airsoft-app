@@ -15,6 +15,7 @@ import { useGame } from "@/features/domination/hooks/useGame";
 import { useMatchEngine } from "@/features/domination/hooks/useMatchEngine";
 import { SimulatedButtonSource } from "@/features/domination";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useNow } from "@/hooks/useNow";
 import {
   roundElapsedMs,
   teamAccumulatedMs,
@@ -93,7 +94,7 @@ function PlayContent({ game }: { game: Game }) {
     }
   };
 
-  const now = Date.now();
+  const now = useNow(200);
   const [teamA, teamB] = game.teams;
   const showSwitcherBanner = game.buttonSource === "switcher";
 
@@ -478,8 +479,11 @@ const styles = StyleSheet.create({
   },
   clockValue: {
     fontSize: 72,
+    lineHeight: 88,
     fontWeight: "700",
     fontVariant: ["tabular-nums"],
+    includeFontPadding: false,
+    textAlignVertical: "center",
   },
   teamsRow: {
     flexDirection: "row",
@@ -541,8 +545,11 @@ const styles = StyleSheet.create({
   },
   countdownValue: {
     fontSize: 128,
+    lineHeight: 156,
     fontWeight: "800",
     fontVariant: ["tabular-nums"],
+    includeFontPadding: false,
+    textAlignVertical: "center",
   },
   winnerRow: {
     flexDirection: "row",
