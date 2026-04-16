@@ -89,7 +89,7 @@ export default function SettingsScreen() {
 
       <View style={styles.versionContainer}>
         <AppText variant="caption" color={colors.textTertiary}>
-          {t("settings.version", { version: "0.1.0" })}
+          {t("settings.version", { version: "0.2.0" })}
         </AppText>
       </View>
 
