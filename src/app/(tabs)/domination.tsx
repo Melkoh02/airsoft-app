@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useTranslation } from "react-i18next";
+import { router } from "expo-router";
 import { useSQLiteContext } from "expo-sqlite";
 import { ScreenLayout } from "@/components/templates/ScreenLayout";
 import { HeaderBar } from "@/components/templates/HeaderBar";
@@ -33,7 +34,11 @@ export default function DominationScreen() {
 
   return (
     <ScreenLayout edges={["top"]}>
-      <HeaderBar title={t("domination.title")} />
+      <HeaderBar
+        title={t("domination.title")}
+        rightIcon="plus"
+        onRightPress={() => router.push("/domination/new")}
+      />
       {games === null ? null : games.length === 0 ? (
         <EmptyState
           icon="crosshairs"

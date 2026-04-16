@@ -34,7 +34,26 @@
       "title": "Aún no hay partidas",
       "description": "Crea tu primera partida de dominación para empezar."
     },
-    "gameSummary": "{{rounds}} rondas · {{minutes}} min c/u"
+    "gameSummary": "{{rounds}} rondas · {{minutes}} min c/u",
+    "form": {
+      "newTitle": "Nueva partida",
+      "editTitle": "Editar partida",
+      "name": "Nombre",
+      "namePlaceholder": "ej. Escaramuza del sábado",
+      "team": "Equipo {{n}}",
+      "defaultTeamA": "Azul",
+      "defaultTeamB": "Rojo",
+      "roundDurationMinutes": "Duración de ronda (minutos)",
+      "roundCount": "Número de rondas",
+      "countdownSeconds": "Cuenta regresiva previa (segundos)",
+      "buttonSource": "Fuente de botones"
+    },
+    "buttonSource": {
+      "simulated": "Simulado",
+      "simulatedHint": "Usa botones en pantalla",
+      "switcher": "Dispositivo Switcher",
+      "switcherHint": "Hardware por USB o Bluetooth"
+    }
   },
   "settings": {
     "title": "Ajustes",

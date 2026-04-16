@@ -26,6 +26,7 @@ function AppStack() {
         }}
       >
         <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="domination" />
       </Stack>
       <AppStatusBar />
     </>

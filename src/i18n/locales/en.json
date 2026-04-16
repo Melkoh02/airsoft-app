@@ -34,7 +34,26 @@
       "title": "No games yet",
       "description": "Create your first domination game to get started."
     },
-    "gameSummary": "{{rounds}} rounds · {{minutes}} min each"
+    "gameSummary": "{{rounds}} rounds · {{minutes}} min each",
+    "form": {
+      "newTitle": "New Game",
+      "editTitle": "Edit Game",
+      "name": "Name",
+      "namePlaceholder": "e.g. Saturday Skirmish",
+      "team": "Team {{n}}",
+      "defaultTeamA": "Blue",
+      "defaultTeamB": "Red",
+      "roundDurationMinutes": "Round duration (minutes)",
+      "roundCount": "Number of rounds",
+      "countdownSeconds": "Pre-round countdown (seconds)",
+      "buttonSource": "Button source"
+    },
+    "buttonSource": {
+      "simulated": "Simulated",
+      "simulatedHint": "Use on-screen buttons",
+      "switcher": "Switcher device",
+      "switcherHint": "USB or Bluetooth hardware"
+    }
   },
   "settings": {
     "title": "Settings",
