@@ -53,7 +53,18 @@
       "simulatedHint": "Use on-screen buttons",
       "switcher": "Switcher device",
       "switcherHint": "USB or Bluetooth hardware"
-    }
+    },
+    "detail": {
+      "rounds": "Rounds",
+      "roundDuration": "Round duration",
+      "countdown": "Pre-round countdown",
+      "minutes": "{{value}} min",
+      "seconds": "{{value}} s",
+      "startMatch": "Start match",
+      "deleteTitle": "Delete game",
+      "deleteMessage": "\"{{name}}\" and all its match history will be deleted. This cannot be undone."
+    },
+    "notFound": "Game not found"
   },
   "settings": {
     "title": "Settings",

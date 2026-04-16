@@ -53,7 +53,18 @@
       "simulatedHint": "Usa botones en pantalla",
       "switcher": "Dispositivo Switcher",
       "switcherHint": "Hardware por USB o Bluetooth"
-    }
+    },
+    "detail": {
+      "rounds": "Rondas",
+      "roundDuration": "Duración de ronda",
+      "countdown": "Cuenta regresiva",
+      "minutes": "{{value}} min",
+      "seconds": "{{value}} s",
+      "startMatch": "Iniciar encuentro",
+      "deleteTitle": "Eliminar partida",
+      "deleteMessage": "Se eliminará \"{{name}}\" y todo su historial. Esta acción no se puede deshacer."
+    },
+    "notFound": "Partida no encontrada"
   },
   "settings": {
     "title": "Ajustes",

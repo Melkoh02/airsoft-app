@@ -52,6 +52,7 @@ export default function DominationScreen() {
           contentContainerStyle={styles.list}
           renderItem={({ item }) => (
             <ListItem
+              onPress={() => router.push(`/domination/${item.id}`)}
               left={
                 <View style={styles.teamDots}>
                   <View style={[styles.dot, { backgroundColor: item.teams[0].color }]} />
