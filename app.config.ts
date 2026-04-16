@@ -28,6 +28,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/images/favicon.png",
   },
   plugins: [
+    "./plugins/withReleaseSigning",
     "expo-router",
     [
       "expo-splash-screen",
@@ -41,6 +42,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
     "@react-native-community/datetimepicker",
     "expo-localization",
+    "expo-sqlite",
   ],
   experiments: {
     typedRoutes: true,

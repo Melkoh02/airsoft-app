@@ -34,6 +34,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="domination"
+        options={{
+          title: t("tabs.domination"),
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="crosshairs" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="settings"
         options={{
           title: t("tabs.settings"),

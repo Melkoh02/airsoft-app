@@ -20,12 +20,97 @@
   },
   "tabs": {
     "home": "Inicio",
+    "domination": "Dominación",
     "settings": "Ajustes"
   },
   "home": {
     "title": "Airsoft App",
     "welcome": "Bienvenido",
     "description": "Esta es la pantalla principal — comienza a construir desde aquí."
+  },
+  "domination": {
+    "title": "Dominación",
+    "empty": {
+      "title": "Aún no hay partidas",
+      "description": "Crea tu primera partida de dominación para empezar."
+    },
+    "gameSummary": "{{rounds}} rondas · {{minutes}} min c/u",
+    "form": {
+      "newTitle": "Nueva partida",
+      "editTitle": "Editar partida",
+      "name": "Nombre",
+      "namePlaceholder": "ej. Escaramuza del sábado",
+      "team": "Equipo {{n}}",
+      "defaultTeamA": "Azul",
+      "defaultTeamB": "Rojo",
+      "roundDurationMinutes": "Duración de ronda (minutos)",
+      "roundCount": "Número de rondas",
+      "countdownSeconds": "Cuenta regresiva previa (segundos)",
+      "buttonSource": "Fuente de botones"
+    },
+    "buttonSource": {
+      "simulated": "Simulado",
+      "simulatedHint": "Usa botones en pantalla",
+      "switcher": "Dispositivo Switcher",
+      "switcherHint": "Hardware por USB o Bluetooth"
+    },
+    "detail": {
+      "rounds": "Rondas",
+      "roundDuration": "Duración de ronda",
+      "countdown": "Cuenta regresiva",
+      "minutes": "{{value}} min",
+      "seconds": "{{value}} s",
+      "startMatch": "Iniciar encuentro",
+      "deleteTitle": "Eliminar partida",
+      "deleteMessage": "Se eliminará \"{{name}}\" y todo su historial. Esta acción no se puede deshacer.",
+      "recentMatches": "Encuentros recientes",
+      "matchWinner": "Ganó {{name}}",
+      "matchTied": "Empatado",
+      "matchAborted": "Cancelado"
+    },
+    "summary": {
+      "title": "Resumen del encuentro",
+      "winner": "Gana {{name}}",
+      "tied": "Encuentro empatado",
+      "aborted": "Encuentro cancelado",
+      "notFound": "Encuentro no encontrado",
+      "roundBreakdown": "Desglose por ronda",
+      "round": "Ronda {{n}}",
+      "roundTied": "Empatada",
+      "roundsWonCount_one": "{{n}} ronda ganada",
+      "roundsWonCount_other": "{{n}} rondas ganadas"
+    },
+    "play": {
+      "roundLabel": "Ronda {{current}} de {{total}}",
+      "switcherFallback": "Switcher no conectado — controles simulados activos",
+      "dominating": "DOMINANDO",
+      "ready": "Listo",
+      "paused": "En pausa",
+      "startRound": "Iniciar ronda",
+      "pause": "Pausar",
+      "resume": "Reanudar",
+      "endRound": "Terminar ronda",
+      "getReady": "Prepárense",
+      "go": "¡YA!",
+      "press": "Pulsar {{team}}",
+      "pressDisabled": "Inicia la ronda para activar los botones",
+      "roundOver": "Ronda {{n}} terminada",
+      "roundWinner": "{{name}} gana la ronda",
+      "roundTied": "Ronda empatada",
+      "nextRound": "Siguiente ronda",
+      "finish": "Terminar encuentro",
+      "matchComplete": "Encuentro completado",
+      "matchWinner": "{{name}} gana el encuentro",
+      "matchTied": "Encuentro empatado",
+      "roundsWon": "Rondas ganadas — {{nameA}}: {{a}} · {{nameB}}: {{b}}",
+      "abort": {
+        "title": "¿Cancelar encuentro?",
+        "message": "El progreso se guardará como cancelado. No podrás reanudar un encuentro cancelado.",
+        "confirm": "Cancelar encuentro"
+      },
+      "viewSummary": "Ver resumen"
+    },
+    "notFound": "Partida no encontrada"
   },
   "settings": {
     "title": "Ajustes",
@@ -34,6 +119,8 @@
     "themeSystem": "Sistema",
     "themeLight": "Claro",
     "themeDark": "Oscuro",
+    "haptics": "Retroalimentación háptica",
+    "hapticsDescription": "Vibrar al pulsar botones durante los encuentros",
     "about": "Acerca de",
     "version": "Versión {{version}}"
   }
