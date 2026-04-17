@@ -24,9 +24,49 @@
     "settings": "Ajustes"
   },
   "home": {
-    "title": "Airsoft App",
+    "title": "Airsoft",
     "welcome": "Bienvenido",
-    "description": "Esta es la pantalla principal — comienza a construir desde aquí."
+    "description": "Esta es la pantalla principal — comienza a construir desde aquí.",
+    "quickStart": {
+      "recentGame": "Partida reciente",
+      "startMatch": "Iniciar encuentro",
+      "noGamesTitle": "Aún no hay partidas",
+      "noGamesDescription": "Configura una partida de dominación y salta directo a un encuentro.",
+      "createGame": "Crear partida"
+    },
+    "recent": {
+      "title": "Encuentros recientes"
+    },
+    "lifetime": {
+      "title": "Histórico",
+      "matches": "encuentros",
+      "rounds": "rondas",
+      "minutes": "minutos"
+    },
+    "weather": {
+      "enableTitle": "Clima en el campo",
+      "enableDescription": "Permite acceder a tu ubicación para ver temperatura, viento y hora del atardecer.",
+      "enable": "Activar ubicación",
+      "openSettings": "Abrir ajustes",
+      "loading": "Obteniendo el clima…",
+      "error": "No se pudo cargar el clima",
+      "retry": "Reintentar",
+      "stale": "Actualizado hace más de una hora · toca para refrescar",
+      "codes": {
+        "clear": "Despejado",
+        "partlyCloudy": "Parcialmente nublado",
+        "overcast": "Nublado",
+        "fog": "Niebla",
+        "drizzle": "Llovizna",
+        "rain": "Lluvia",
+        "snow": "Nieve",
+        "rainShowers": "Chubascos",
+        "snowShowers": "Nevadas",
+        "thunderstorm": "Tormenta",
+        "thunderstormHail": "Tormenta con granizo",
+        "unknown": "Desconocido"
+      }
+    }
   },
   "domination": {
     "title": "Dominación",
@@ -121,7 +161,22 @@
     "themeDark": "Oscuro",
     "haptics": "Retroalimentación háptica",
     "hapticsDescription": "Vibrar al pulsar botones durante los encuentros",
-    "about": "Acerca de",
+    "units": "Unidades",
+    "unitsMetric": "Métricas (°C, km/h)",
+    "unitsImperial": "Imperiales (°F, mph)",
+    "location": {
+      "title": "Ubicación",
+      "granted": "Permitida — usada para el clima",
+      "denied": "Denegada — toca para abrir ajustes del sistema",
+      "undetermined": "Aún no activada"
+    },
+    "about": {
+      "title": "Acerca de",
+      "tagline": "App offline de apoyo para partidas de airsoft.",
+      "credits": "Créditos",
+      "openMeteo": "Clima por Open-Meteo",
+      "viewOnGitHub": "Ver en GitHub"
+    },
     "version": "Versión {{version}}"
   }
 }

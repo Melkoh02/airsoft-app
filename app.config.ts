@@ -43,6 +43,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     "@react-native-community/datetimepicker",
     "expo-localization",
     "expo-sqlite",
+    [
+      "expo-location",
+      {
+        locationWhenInUsePermission:
+          "Airsoft App uses your location to show weather at the field.",
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,
