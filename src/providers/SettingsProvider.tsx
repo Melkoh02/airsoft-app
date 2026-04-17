@@ -2,17 +2,22 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { useSQLiteContext } from "expo-sqlite";
 import * as settingsRepository from "@/data/settingsRepository";
 
+export type Units = "metric" | "imperial";
+
 type Settings = {
   hapticsEnabled: boolean;
+  units: Units;
 };
 
 type SettingsContextValue = Settings & {
   setHapticsEnabled: (value: boolean) => void;
+  setUnits: (value: Units) => void;
   loaded: boolean;
 };
 
 const DEFAULTS: Settings = {
   hapticsEnabled: true,
+  units: "metric",
 };
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
@@ -28,8 +33,10 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       .getAll(db)
       .then((kv) => {
         if (cancelled) return;
+        const units: Units = kv.units === "imperial" ? "imperial" : "metric";
         setSettings({
           hapticsEnabled: kv.hapticsEnabled !== "false",
+          units,
         });
         setLoaded(true);
       })
@@ -49,9 +56,17 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     [db],
   );
 
+  const setUnits = useCallback(
+    (value: Units) => {
+      setSettings((s) => ({ ...s, units: value }));
+      settingsRepository.set(db, "units", value).catch(() => {});
+    },
+    [db],
+  );
+
   const value = useMemo<SettingsContextValue>(
-    () => ({ ...settings, setHapticsEnabled, loaded }),
-    [settings, setHapticsEnabled, loaded],
+    () => ({ ...settings, setHapticsEnabled, setUnits, loaded }),
+    [settings, setHapticsEnabled, setUnits, loaded],
   );
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
@@ -60,6 +75,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 const FALLBACK: SettingsContextValue = {
   ...DEFAULTS,
   setHapticsEnabled: () => {},
+  setUnits: () => {},
   loaded: false,
 };
 

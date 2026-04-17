@@ -1,7 +1,7 @@
 {
   "name": "airsoft-app",
   "main": "expo-router/entry",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "expo start",
     "android": "rm -rf android && APP_VARIANT=development expo run:android",
@@ -26,6 +26,7 @@
     "expo-keep-awake": "~55.0.6",
     "expo-linking": "~55.0.8",
     "expo-localization": "~55.0.9",
+    "expo-location": "~55.1.8",
     "expo-router": "~55.0.7",
     "expo-splash-screen": "~55.0.12",
     "expo-sqlite": "~55.0.15",

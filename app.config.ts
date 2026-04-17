@@ -6,7 +6,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: IS_DEV ? "[Dev] Airsoft App" : "Airsoft App",
   slug: "airsoft-app",
-  version: "0.2.0",
+  version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: IS_DEV ? "airsoft-dev" : "airsoft",
@@ -43,6 +43,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     "@react-native-community/datetimepicker",
     "expo-localization",
     "expo-sqlite",
+    [
+      "expo-location",
+      {
+        locationWhenInUsePermission:
+          "Airsoft App uses your location to show weather at the field.",
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,

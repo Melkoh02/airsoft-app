@@ -24,9 +24,49 @@
     "settings": "Settings"
   },
   "home": {
-    "title": "Airsoft App",
+    "title": "Airsoft",
     "welcome": "Welcome",
-    "description": "This is the home screen — start building from here."
+    "description": "This is the home screen — start building from here.",
+    "quickStart": {
+      "recentGame": "Latest game",
+      "startMatch": "Start match",
+      "noGamesTitle": "No games yet",
+      "noGamesDescription": "Set up a domination game and jump straight into a match.",
+      "createGame": "Create a game"
+    },
+    "recent": {
+      "title": "Recent matches"
+    },
+    "lifetime": {
+      "title": "Lifetime",
+      "matches": "matches",
+      "rounds": "rounds",
+      "minutes": "minutes"
+    },
+    "weather": {
+      "enableTitle": "Weather at the field",
+      "enableDescription": "Allow location to show temperature, wind, and sunset time.",
+      "enable": "Enable location",
+      "openSettings": "Open settings",
+      "loading": "Fetching weather…",
+      "error": "Could not load weather",
+      "retry": "Retry",
+      "stale": "Updated over an hour ago · tap to refresh",
+      "codes": {
+        "clear": "Clear",
+        "partlyCloudy": "Partly cloudy",
+        "overcast": "Overcast",
+        "fog": "Fog",
+        "drizzle": "Drizzle",
+        "rain": "Rain",
+        "snow": "Snow",
+        "rainShowers": "Rain showers",
+        "snowShowers": "Snow showers",
+        "thunderstorm": "Thunderstorm",
+        "thunderstormHail": "Thunderstorm with hail",
+        "unknown": "Unknown"
+      }
+    }
   },
   "domination": {
     "title": "Domination",
@@ -121,7 +161,22 @@
     "themeDark": "Dark",
     "haptics": "Haptic feedback",
     "hapticsDescription": "Vibrate on button presses during matches",
-    "about": "About",
+    "units": "Units",
+    "unitsMetric": "Metric (°C, km/h)",
+    "unitsImperial": "Imperial (°F, mph)",
+    "location": {
+      "title": "Location",
+      "granted": "Granted — used for weather",
+      "denied": "Denied — tap to open system settings",
+      "undetermined": "Not yet enabled"
+    },
+    "about": {
+      "title": "About",
+      "tagline": "Offline companion app for airsoft skirmishes.",
+      "credits": "Credits",
+      "openMeteo": "Weather by Open-Meteo",
+      "viewOnGitHub": "View on GitHub"
+    },
     "version": "Version {{version}}"
   }
 }
