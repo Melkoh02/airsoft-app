@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-04-17
+
+Home and Settings are no longer placeholders. The app feels complete as an offline companion.
+
+### Added
+- **Home dashboard** replaces the placeholder welcome screen:
+  - **Weather card** — current temperature, condition, wind, and sunrise/sunset for your location. Powered by Open-Meteo (no API key required), fetched at most once per hour and cached in SQLite. Falls back to a stale-but-visible state when offline.
+  - **Quick start card** — most recently edited game with a one-tap "Start match"; CTA to create a game when none exist.
+  - **Recent matches** — last three finished matches across all games with winner color dot; tap to open the match summary.
+  - **Lifetime stats** — matches played, rounds played, total active match time, rolled up across every game.
+- **Location permission** via `expo-location`, requested lazily (never on launch). A "Location" row in Settings shows current status and jumps to OS settings when permanently denied.
+- **Units setting** — metric / imperial picker on Settings; drives weather card display and re-fetches on change.
+- **About modal** on Settings — app name, version, short tagline, Open-Meteo credit, and a "View on GitHub" link.
+
+### Changed
+- Haptic-feedback toggle in Settings now sits alongside Units, Location, and About for a fuller settings layout.
+- `useGames`, `useGlobalMatches`, and `computeGlobalStats` helpers exposed for cross-feature consumption (home cards + future widgets).
+
 ## [0.2.0] - 2026-04-16
 
 First feature release. The app now has a working game mode end-to-end.
