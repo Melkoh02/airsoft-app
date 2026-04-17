@@ -26,7 +26,31 @@
   "home": {
     "title": "Airsoft App",
     "welcome": "Bienvenido",
-    "description": "Esta es la pantalla principal — comienza a construir desde aquí."
+    "description": "Esta es la pantalla principal — comienza a construir desde aquí.",
+    "weather": {
+      "enableTitle": "Clima en el campo",
+      "enableDescription": "Permite acceder a tu ubicación para ver temperatura, viento y hora del atardecer.",
+      "enable": "Activar ubicación",
+      "openSettings": "Abrir ajustes",
+      "loading": "Obteniendo el clima…",
+      "error": "No se pudo cargar el clima",
+      "retry": "Reintentar",
+      "stale": "Actualizado hace más de una hora · toca para refrescar",
+      "codes": {
+        "clear": "Despejado",
+        "partlyCloudy": "Parcialmente nublado",
+        "overcast": "Nublado",
+        "fog": "Niebla",
+        "drizzle": "Llovizna",
+        "rain": "Lluvia",
+        "snow": "Nieve",
+        "rainShowers": "Chubascos",
+        "snowShowers": "Nevadas",
+        "thunderstorm": "Tormenta",
+        "thunderstormHail": "Tormenta con granizo",
+        "unknown": "Desconocido"
+      }
+    }
   },
   "domination": {
     "title": "Dominación",

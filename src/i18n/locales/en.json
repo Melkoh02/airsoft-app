@@ -26,7 +26,31 @@
   "home": {
     "title": "Airsoft App",
     "welcome": "Welcome",
-    "description": "This is the home screen — start building from here."
+    "description": "This is the home screen — start building from here.",
+    "weather": {
+      "enableTitle": "Weather at the field",
+      "enableDescription": "Allow location to show temperature, wind, and sunset time.",
+      "enable": "Enable location",
+      "openSettings": "Open settings",
+      "loading": "Fetching weather…",
+      "error": "Could not load weather",
+      "retry": "Retry",
+      "stale": "Updated over an hour ago · tap to refresh",
+      "codes": {
+        "clear": "Clear",
+        "partlyCloudy": "Partly cloudy",
+        "overcast": "Overcast",
+        "fog": "Fog",
+        "drizzle": "Drizzle",
+        "rain": "Rain",
+        "snow": "Snow",
+        "rainShowers": "Rain showers",
+        "snowShowers": "Snow showers",
+        "thunderstorm": "Thunderstorm",
+        "thunderstormHail": "Thunderstorm with hail",
+        "unknown": "Unknown"
+      }
+    }
   },
   "domination": {
     "title": "Domination",
