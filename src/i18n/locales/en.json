@@ -164,7 +164,19 @@
     "units": "Units",
     "unitsMetric": "Metric (°C, km/h)",
     "unitsImperial": "Imperial (°F, mph)",
-    "about": "About",
+    "location": {
+      "title": "Location",
+      "granted": "Granted — used for weather",
+      "denied": "Denied — tap to open system settings",
+      "undetermined": "Not yet enabled"
+    },
+    "about": {
+      "title": "About",
+      "tagline": "Offline companion app for airsoft skirmishes.",
+      "credits": "Credits",
+      "openMeteo": "Weather by Open-Meteo",
+      "viewOnGitHub": "View on GitHub"
+    },
     "version": "Version {{version}}"
   }
 }

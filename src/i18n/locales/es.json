@@ -164,7 +164,19 @@
     "units": "Unidades",
     "unitsMetric": "Métricas (°C, km/h)",
     "unitsImperial": "Imperiales (°F, mph)",
-    "about": "Acerca de",
+    "location": {
+      "title": "Ubicación",
+      "granted": "Permitida — usada para el clima",
+      "denied": "Denegada — toca para abrir ajustes del sistema",
+      "undetermined": "Aún no activada"
+    },
+    "about": {
+      "title": "Acerca de",
+      "tagline": "App offline de apoyo para partidas de airsoft.",
+      "credits": "Créditos",
+      "openMeteo": "Clima por Open-Meteo",
+      "viewOnGitHub": "Ver en GitHub"
+    },
     "version": "Versión {{version}}"
   }
 }
