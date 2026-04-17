@@ -1,35 +1,32 @@
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { ScreenLayout } from "@/components/templates/ScreenLayout";
 import { HeaderBar } from "@/components/templates/HeaderBar";
-import { AppText } from "@/components/atoms/AppText";
-import { useTheme } from "@/providers/ThemeProvider";
+import { WeatherCard } from "@/features/weather/components/WeatherCard";
+import { QuickStartCard } from "@/features/home/components/QuickStartCard";
+import { RecentMatchesCard } from "@/features/home/components/RecentMatchesCard";
+import { LifetimeStatsCard } from "@/features/home/components/LifetimeStatsCard";
 import { spacing } from "@/theme/spacing";
 
 export default function HomeScreen() {
   const { t } = useTranslation();
-  const { colors } = useTheme();
 
   return (
-    <ScreenLayout edges={["top"]}>
+    <ScreenLayout scrollable edges={["top"]}>
       <HeaderBar title={t("home.title")} />
-      <View style={styles.body}>
-        <AppText variant="h2">{t("home.welcome")}</AppText>
-        <AppText variant="body" color={colors.textSecondary} style={styles.description}>
-          {t("home.description")}
-        </AppText>
+      <View style={styles.content}>
+        <WeatherCard />
+        <QuickStartCard />
+        <RecentMatchesCard />
+        <LifetimeStatsCard />
       </View>
     </ScreenLayout>
   );
 }
 
 const styles = StyleSheet.create({
-  body: {
-    flex: 1,
+  content: {
     padding: spacing.lg,
-    gap: spacing.sm,
-  },
-  description: {
-    marginTop: spacing.xs,
+    gap: spacing.lg,
   },
 });

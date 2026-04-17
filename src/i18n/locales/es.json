@@ -24,9 +24,25 @@
     "settings": "Ajustes"
   },
   "home": {
-    "title": "Airsoft App",
+    "title": "Airsoft",
     "welcome": "Bienvenido",
     "description": "Esta es la pantalla principal — comienza a construir desde aquí.",
+    "quickStart": {
+      "recentGame": "Partida reciente",
+      "startMatch": "Iniciar encuentro",
+      "noGamesTitle": "Aún no hay partidas",
+      "noGamesDescription": "Configura una partida de dominación y salta directo a un encuentro.",
+      "createGame": "Crear partida"
+    },
+    "recent": {
+      "title": "Encuentros recientes"
+    },
+    "lifetime": {
+      "title": "Histórico",
+      "matches": "encuentros",
+      "rounds": "rondas",
+      "minutes": "minutos"
+    },
     "weather": {
       "enableTitle": "Clima en el campo",
       "enableDescription": "Permite acceder a tu ubicación para ver temperatura, viento y hora del atardecer.",

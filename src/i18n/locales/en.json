@@ -24,9 +24,25 @@
     "settings": "Settings"
   },
   "home": {
-    "title": "Airsoft App",
+    "title": "Airsoft",
     "welcome": "Welcome",
     "description": "This is the home screen — start building from here.",
+    "quickStart": {
+      "recentGame": "Latest game",
+      "startMatch": "Start match",
+      "noGamesTitle": "No games yet",
+      "noGamesDescription": "Set up a domination game and jump straight into a match.",
+      "createGame": "Create a game"
+    },
+    "recent": {
+      "title": "Recent matches"
+    },
+    "lifetime": {
+      "title": "Lifetime",
+      "matches": "matches",
+      "rounds": "rounds",
+      "minutes": "minutes"
+    },
     "weather": {
       "enableTitle": "Weather at the field",
       "enableDescription": "Allow location to show temperature, wind, and sunset time.",
