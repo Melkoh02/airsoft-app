@@ -1,4 +1,32 @@
-import type { Game, Match } from "./types";
+import type { Game, Match, RoundResult } from "./types";
+
+export type GlobalStats = {
+  matchesPlayed: number;
+  roundsPlayed: number;
+  totalActiveMs: number;
+};
+
+function roundActiveMs(round: RoundResult): number {
+  let sum = round.neutralMs;
+  for (const key of Object.keys(round.dominationMsByTeam)) {
+    sum += round.dominationMsByTeam[key];
+  }
+  return sum;
+}
+
+export function computeGlobalStats(matches: Match[]): GlobalStats {
+  let matchesPlayed = 0;
+  let roundsPlayed = 0;
+  let totalActiveMs = 0;
+  for (const match of matches) {
+    if (match.status === "completed") matchesPlayed++;
+    for (const round of match.rounds) {
+      roundsPlayed++;
+      totalActiveMs += roundActiveMs(round);
+    }
+  }
+  return { matchesPlayed, roundsPlayed, totalActiveMs };
+}
 
 export type MatchStats = {
   winnerTeamId: string | null;

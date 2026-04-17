@@ -110,3 +110,18 @@ export async function listMatchesForGame(db: SQLiteDatabase, gameId: string): Pr
   );
   return Promise.all(rows.map((row) => rowToMatch(db, row)));
 }
+
+export async function listRecent(db: SQLiteDatabase, limit: number): Promise<Match[]> {
+  const rows = await db.getAllAsync<MatchRow>(
+    "SELECT * FROM matches WHERE status != 'in_progress' ORDER BY started_at DESC LIMIT ?",
+    [limit],
+  );
+  return Promise.all(rows.map((row) => rowToMatch(db, row)));
+}
+
+export async function listAllCompleted(db: SQLiteDatabase): Promise<Match[]> {
+  const rows = await db.getAllAsync<MatchRow>(
+    "SELECT * FROM matches WHERE status != 'in_progress' ORDER BY started_at DESC",
+  );
+  return Promise.all(rows.map((row) => rowToMatch(db, row)));
+}
