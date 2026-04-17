@@ -8,7 +8,7 @@ import { AppText } from "@/components/atoms/AppText";
 import { AppIcon } from "@/components/atoms/AppIcon";
 import { Divider } from "@/components/atoms/Divider";
 import { useTheme } from "@/providers/ThemeProvider";
-import { useSettings } from "@/providers/SettingsProvider";
+import { useSettings, type Units } from "@/providers/SettingsProvider";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SUPPORTED_LANGUAGES } from "@/i18n";
 import { spacing } from "@/theme/spacing";
@@ -18,10 +18,11 @@ type ThemeMode = "system" | "light" | "dark";
 export default function SettingsScreen() {
   const { t } = useTranslation();
   const { colors, mode, setMode } = useTheme();
-  const { hapticsEnabled, setHapticsEnabled } = useSettings();
+  const { hapticsEnabled, setHapticsEnabled, units, setUnits } = useSettings();
   const { language, changeLanguage } = useLanguage();
   const [showLanguagePicker, setShowLanguagePicker] = useState(false);
   const [showThemePicker, setShowThemePicker] = useState(false);
+  const [showUnitsPicker, setShowUnitsPicker] = useState(false);
 
   const themeOptions: { code: ThemeMode; labelKey: string }[] = [
     { code: "system", labelKey: "settings.themeSystem" },
@@ -29,10 +30,18 @@ export default function SettingsScreen() {
     { code: "dark", labelKey: "settings.themeDark" },
   ];
 
+  const unitsOptions: { code: Units; labelKey: string }[] = [
+    { code: "metric", labelKey: "settings.unitsMetric" },
+    { code: "imperial", labelKey: "settings.unitsImperial" },
+  ];
+
   const currentLanguageLabel =
     SUPPORTED_LANGUAGES.find((l) => l.code === language)?.label ?? language;
   const currentThemeLabel = t(
     themeOptions.find((o) => o.code === mode)?.labelKey ?? "settings.themeSystem",
+  );
+  const currentUnitsLabel = t(
+    unitsOptions.find((o) => o.code === units)?.labelKey ?? "settings.unitsMetric",
   );
 
   return (
@@ -69,6 +78,24 @@ export default function SettingsScreen() {
           <AppText variant="body">{t("settings.theme")}</AppText>
           <AppText variant="caption" color={colors.textSecondary}>
             {currentThemeLabel}
+          </AppText>
+        </View>
+        <AppIcon name="chevron-right" size={20} color={colors.iconSecondary} />
+      </Pressable>
+      <Divider />
+
+      <Pressable
+        onPress={() => setShowUnitsPicker(true)}
+        style={({ pressed }) => [
+          styles.row,
+          { backgroundColor: pressed ? colors.borderLight : "transparent" },
+        ]}
+      >
+        <AppIcon name="tape-measure" size={22} color={colors.primary} />
+        <View style={styles.rowText}>
+          <AppText variant="body">{t("settings.units")}</AppText>
+          <AppText variant="caption" color={colors.textSecondary}>
+            {currentUnitsLabel}
           </AppText>
         </View>
         <AppIcon name="chevron-right" size={20} color={colors.iconSecondary} />
@@ -119,6 +146,24 @@ export default function SettingsScreen() {
         selectedKey={mode}
         onSelect={(item) => setMode(item.code)}
         onClose={() => setShowThemePicker(false)}
+        renderItem={(item, isSelected) => (
+          <>
+            <AppText variant="body" style={styles.pickerLabel}>
+              {t(item.labelKey)}
+            </AppText>
+            {isSelected && <AppIcon name="check" size={20} color={colors.primary} />}
+          </>
+        )}
+      />
+
+      <PickerModal
+        visible={showUnitsPicker}
+        title={t("settings.units")}
+        items={unitsOptions}
+        keyExtractor={(item) => item.code}
+        selectedKey={units}
+        onSelect={(item) => setUnits(item.code)}
+        onClose={() => setShowUnitsPicker(false)}
         renderItem={(item, isSelected) => (
           <>
             <AppText variant="body" style={styles.pickerLabel}>

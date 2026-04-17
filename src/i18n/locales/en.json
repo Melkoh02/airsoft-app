@@ -121,6 +121,9 @@
     "themeDark": "Dark",
     "haptics": "Haptic feedback",
     "hapticsDescription": "Vibrate on button presses during matches",
+    "units": "Units",
+    "unitsMetric": "Metric (°C, km/h)",
+    "unitsImperial": "Imperial (°F, mph)",
     "about": "About",
     "version": "Version {{version}}"
   }

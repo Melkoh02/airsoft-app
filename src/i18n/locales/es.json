@@ -121,6 +121,9 @@
     "themeDark": "Oscuro",
     "haptics": "Retroalimentación háptica",
     "hapticsDescription": "Vibrar al pulsar botones durante los encuentros",
+    "units": "Unidades",
+    "unitsMetric": "Métricas (°C, km/h)",
+    "unitsImperial": "Imperiales (°F, mph)",
     "about": "Acerca de",
     "version": "Versión {{version}}"
   }
