@@ -92,7 +92,7 @@
       "simulated": "Simulado",
       "simulatedHint": "Usa botones en pantalla",
       "switcher": "Dispositivo Switcher",
-      "switcherHint": "Hardware por USB o Bluetooth"
+      "switcherHint": "Hardware inalámbrico en la red local"
     },
     "detail": {
       "rounds": "Rondas",
@@ -176,6 +176,13 @@
       "credits": "Créditos",
       "openMeteo": "Clima por Open-Meteo",
       "viewOnGitHub": "Ver en GitHub"
+    },
+    "switcher": {
+      "title": "Dispositivo Switcher",
+      "modalTitle": "Dispositivo Switcher",
+      "hostLabel": "Host",
+      "hostPlaceholder": "rasp314.local:8765",
+      "hostDescription": "Dirección WebSocket del Switcher en tu red local. Prueba con la IP si el hostname no resuelve."
     },
     "version": "Versión {{version}}"
   }
