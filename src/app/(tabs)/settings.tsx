@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import { View, Pressable, StyleSheet, Switch, Linking } from "react-native";
+import { View, Pressable, StyleSheet, Switch, Linking, Modal } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useFocusEffect } from "expo-router";
 import * as Location from "expo-location";
 import { ScreenLayout } from "@/components/templates/ScreenLayout";
 import { HeaderBar } from "@/components/templates/HeaderBar";
+import { ModalLayout } from "@/components/templates/ModalLayout";
 import { PickerModal } from "@/components/molecules/PickerModal";
 import { AppText } from "@/components/atoms/AppText";
 import { AppIcon } from "@/components/atoms/AppIcon";
+import { AppInput } from "@/components/atoms/AppInput";
+import { AppButton } from "@/components/atoms/AppButton";
 import { Divider } from "@/components/atoms/Divider";
 import { useTheme } from "@/providers/ThemeProvider";
 import { useSettings, type Units } from "@/providers/SettingsProvider";
@@ -25,11 +28,13 @@ type LocationStatus = "undetermined" | "granted" | "denied";
 export default function SettingsScreen() {
   const { t } = useTranslation();
   const { colors, mode, setMode } = useTheme();
-  const { hapticsEnabled, setHapticsEnabled, units, setUnits } = useSettings();
+  const { hapticsEnabled, setHapticsEnabled, units, setUnits, switcherHost, setSwitcherHost } =
+    useSettings();
   const { language, changeLanguage } = useLanguage();
   const [showLanguagePicker, setShowLanguagePicker] = useState(false);
   const [showThemePicker, setShowThemePicker] = useState(false);
   const [showUnitsPicker, setShowUnitsPicker] = useState(false);
+  const [showSwitcher, setShowSwitcher] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [locationStatus, setLocationStatus] = useState<LocationStatus>("undetermined");
 
@@ -180,6 +185,24 @@ export default function SettingsScreen() {
       <Divider />
 
       <Pressable
+        onPress={() => setShowSwitcher(true)}
+        style={({ pressed }) => [
+          styles.row,
+          { backgroundColor: pressed ? colors.borderLight : "transparent" },
+        ]}
+      >
+        <AppIcon name="toggle-switch-outline" size={22} color={colors.primary} />
+        <View style={styles.rowText}>
+          <AppText variant="body">{t("settings.switcher.title")}</AppText>
+          <AppText variant="caption" color={colors.textSecondary}>
+            {switcherHost}
+          </AppText>
+        </View>
+        <AppIcon name="chevron-right" size={20} color={colors.iconSecondary} />
+      </Pressable>
+      <Divider />
+
+      <Pressable
         onPress={() => setShowAbout(true)}
         style={({ pressed }) => [
           styles.row,
@@ -257,8 +280,65 @@ export default function SettingsScreen() {
         )}
       />
 
+      <SwitcherHostModal
+        visible={showSwitcher}
+        initialHost={switcherHost}
+        onSave={(value) => {
+          setSwitcherHost(value);
+          setShowSwitcher(false);
+        }}
+        onClose={() => setShowSwitcher(false)}
+      />
+
       <AboutModal visible={showAbout} version={APP_VERSION} onClose={() => setShowAbout(false)} />
     </ScreenLayout>
+  );
+}
+
+function SwitcherHostModal({
+  visible,
+  initialHost,
+  onSave,
+  onClose,
+}: {
+  visible: boolean;
+  initialHost: string;
+  onSave: (value: string) => void;
+  onClose: () => void;
+}) {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  const [value, setValue] = useState(initialHost);
+
+  useEffect(() => {
+    if (visible) setValue(initialHost);
+  }, [visible, initialHost]);
+
+  return (
+    <Modal
+      visible={visible}
+      animationType="slide"
+      presentationStyle="formSheet"
+      onRequestClose={onClose}
+    >
+      <ModalLayout title={t("settings.switcher.modalTitle")} onClose={onClose}>
+        <View style={styles.modalBody}>
+          <AppInput
+            label={t("settings.switcher.hostLabel")}
+            value={value}
+            onChangeText={setValue}
+            placeholder={t("settings.switcher.hostPlaceholder")}
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="url"
+          />
+          <AppText variant="caption" color={colors.textSecondary}>
+            {t("settings.switcher.hostDescription")}
+          </AppText>
+          <AppButton title={t("common.save")} onPress={() => onSave(value)} />
+        </View>
+      </ModalLayout>
+    </Modal>
   );
 }
 
@@ -280,5 +360,9 @@ const styles = StyleSheet.create({
   },
   pickerLabel: {
     flex: 1,
+  },
+  modalBody: {
+    paddingTop: spacing.md,
+    gap: spacing.md,
   },
 });

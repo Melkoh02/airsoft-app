@@ -92,7 +92,7 @@
       "simulated": "Simulated",
       "simulatedHint": "Use on-screen buttons",
       "switcher": "Switcher device",
-      "switcherHint": "USB or Bluetooth hardware"
+      "switcherHint": "Wireless hardware on local network"
     },
     "detail": {
       "rounds": "Rounds",
@@ -176,6 +176,13 @@
       "credits": "Credits",
       "openMeteo": "Weather by Open-Meteo",
       "viewOnGitHub": "View on GitHub"
+    },
+    "switcher": {
+      "title": "Switcher device",
+      "modalTitle": "Switcher device",
+      "hostLabel": "Host",
+      "hostPlaceholder": "rasp314.local:8765",
+      "hostDescription": "WebSocket address of the Switcher on your local network. Try the LAN IP if the hostname doesn't resolve."
     },
     "version": "Version {{version}}"
   }
