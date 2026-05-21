@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-20
+
+External Switcher hardware lands. A 3-position rocker switch wired to a
+Raspberry Pi Zero W can now drive Domination matches over WiFi.
+
+### Added
+- **Switcher device support over WebSocket** — point control via a physical 3-position switch on a Raspberry Pi Zero W, no more thumbing the screen mid-skirmish.
+  - Pi-side daemon (`pi/switcher/main.py`) reads GPIO17 / GPIO27 with internal pull-ups, debounces, and broadcasts state changes as NDJSON on `ws://<host>:8765/`. Includes wiring identifier script (`identify_common.py`) for finding the switch's common terminal without a multimeter.
+  - App-side `SwitcherButtonSource` is a WebSocket client with exponential-backoff reconnect (500 ms → 5 s) that maps `blue` / `red` / `neutral` to team A / team B / neutral owner. The existing yellow "Switcher not connected" banner is now reactive — clears within a couple seconds of the WS connecting.
+  - On-screen simulated buttons remain available as a fallback when the device is configured but unreachable.
+- **Settings → "Switcher device"** row + edit modal for the device host. Default `rasp314.local:8765`; falls back to a LAN IP if mDNS doesn't resolve. Persisted in `app_settings`.
+
+### Notes
+- Round start does **not** auto-read the switch's current physical position — kept as an intentional safeguard against accidental round starts. After "Start round," the first switch flip dispatches the press.
+
 ## [1.0.0] - 2026-04-17
 
 Home and Settings are no longer placeholders. The app feels complete as an offline companion.
