@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-05-20
+
+### Fixed
+- **Switcher device couldn't connect on release builds.** Android 9+ blocks cleartext (`ws://`, `http://`) traffic by default. Adds the `expo-build-properties` config plugin with `android.usesCleartextTraffic: true` so the LAN WebSocket to the Pi is permitted. Without this, v1.1.0 release APKs never opened a TCP connection to the daemon (Pi log showed `clients=0` on every flip).
+
 ## [1.1.0] - 2026-05-20
 
 External Switcher hardware lands. A 3-position rocker switch wired to a
