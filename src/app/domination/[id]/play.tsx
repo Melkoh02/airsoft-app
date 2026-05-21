@@ -13,7 +13,8 @@ import { EmptyState } from "@/components/molecules/EmptyState";
 import { useTheme } from "@/providers/ThemeProvider";
 import { useGame } from "@/features/domination/hooks/useGame";
 import { useMatchEngine } from "@/features/domination/hooks/useMatchEngine";
-import { SimulatedButtonSource } from "@/features/domination";
+import { SimulatedButtonSource, SwitcherButtonSource } from "@/features/domination";
+import { useSettings } from "@/providers/SettingsProvider";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useNow } from "@/hooks/useNow";
 import {
@@ -53,8 +54,10 @@ export default function PlayScreen() {
 function PlayContent({ game }: { game: Game }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
+  const { switcherHost } = useSettings();
   const [source] = useState(() => new SimulatedButtonSource());
   const [confirmAbort, setConfirmAbort] = useState(false);
+  const [switcherConnected, setSwitcherConnected] = useState(false);
   const haptic = useHaptic();
   useKeepAwake("domination-match");
 
@@ -74,6 +77,29 @@ function PlayContent({ game }: { game: Game }) {
       source.stop();
     };
   }, [source, dispatch, haptic]);
+
+  const teamAId = game.teams[0].id;
+  const teamBId = game.teams[1].id;
+  useEffect(() => {
+    if (game.buttonSource !== "switcher") return;
+    const switcher = new SwitcherButtonSource({
+      host: switcherHost,
+      teamAId,
+      teamBId,
+    });
+    switcher.start();
+    const unsubPress = switcher.onPress((ev) => {
+      haptic("medium");
+      dispatch({ type: "press", teamId: ev.teamId, at: ev.at });
+    });
+    const unsubConn = switcher.onConnectionChange(setSwitcherConnected);
+    return () => {
+      unsubPress();
+      unsubConn();
+      switcher.stop();
+      setSwitcherConnected(false);
+    };
+  }, [game.buttonSource, teamAId, teamBId, switcherHost, dispatch, haptic]);
 
   useEffect(() => {
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -96,7 +122,7 @@ function PlayContent({ game }: { game: Game }) {
 
   const now = useNow(200);
   const [teamA, teamB] = game.teams;
-  const showSwitcherBanner = game.buttonSource === "switcher";
+  const showSwitcherBanner = game.buttonSource === "switcher" && !switcherConnected;
 
   return (
     <ScreenLayout edges={["top"]}>

@@ -7,17 +7,22 @@ export type Units = "metric" | "imperial";
 type Settings = {
   hapticsEnabled: boolean;
   units: Units;
+  switcherHost: string;
 };
 
 type SettingsContextValue = Settings & {
   setHapticsEnabled: (value: boolean) => void;
   setUnits: (value: Units) => void;
+  setSwitcherHost: (value: string) => void;
   loaded: boolean;
 };
+
+const DEFAULT_SWITCHER_HOST = "rasp314.local:8765";
 
 const DEFAULTS: Settings = {
   hapticsEnabled: true,
   units: "metric",
+  switcherHost: DEFAULT_SWITCHER_HOST,
 };
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
@@ -37,6 +42,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         setSettings({
           hapticsEnabled: kv.hapticsEnabled !== "false",
           units,
+          switcherHost: kv.switcherHost ?? DEFAULT_SWITCHER_HOST,
         });
         setLoaded(true);
       })
@@ -64,9 +70,18 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     [db],
   );
 
+  const setSwitcherHost = useCallback(
+    (value: string) => {
+      const next = value.trim() || DEFAULT_SWITCHER_HOST;
+      setSettings((s) => ({ ...s, switcherHost: next }));
+      settingsRepository.set(db, "switcherHost", next).catch(() => {});
+    },
+    [db],
+  );
+
   const value = useMemo<SettingsContextValue>(
-    () => ({ ...settings, setHapticsEnabled, setUnits, loaded }),
-    [settings, setHapticsEnabled, setUnits, loaded],
+    () => ({ ...settings, setHapticsEnabled, setUnits, setSwitcherHost, loaded }),
+    [settings, setHapticsEnabled, setUnits, setSwitcherHost, loaded],
   );
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
@@ -76,6 +91,7 @@ const FALLBACK: SettingsContextValue = {
   ...DEFAULTS,
   setHapticsEnabled: () => {},
   setUnits: () => {},
+  setSwitcherHost: () => {},
   loaded: false,
 };
 
