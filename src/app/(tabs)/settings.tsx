@@ -19,7 +19,7 @@ import { SUPPORTED_LANGUAGES } from "@/i18n";
 import { AboutModal } from "@/features/settings/components/AboutModal";
 import { spacing } from "@/theme/spacing";
 
-const APP_VERSION = "1.1.0";
+const APP_VERSION = "1.1.1";
 
 type ThemeMode = "system" | "light" | "dark";
 
