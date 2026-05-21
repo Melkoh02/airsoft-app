@@ -6,7 +6,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: IS_DEV ? "[Dev] Airsoft App" : "Airsoft App",
   slug: "airsoft-app",
-  version: "1.1.0",
+  version: "1.1.1",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: IS_DEV ? "airsoft-dev" : "airsoft",
@@ -29,6 +29,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     "./plugins/withReleaseSigning",
+    [
+      "expo-build-properties",
+      {
+        android: {
+          usesCleartextTraffic: true,
+        },
+      },
+    ],
     "expo-router",
     [
       "expo-splash-screen",
